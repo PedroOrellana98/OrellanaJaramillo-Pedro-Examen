@@ -1,54 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
     <title>
-        Insertar Usuario
+        Buscar Ticket
     </title>
     <meta charset="UTF-8" />
     <meta name="keywords" content="Cuenta, Formulario" />
     <link href= "../../../css/general.css" rel="stylesheet" type="text/css"/>
-    <link href= "../../../css/admin.css" rel="stylesheet" type="text/css"/>
-    <script src = "../../../js/validar.js"></script>
+    <link href= "../../../css/buscar.css" rel="stylesheet" type="text/css"/>
+    <script src = "../../../js/buscar.js"></script>
     <body>
     <header>
-        <h1 id = "titulo"> INSERT </h1>
+        <h1 id = "titulo"> SEARCH </h1>
         <img id="tituloImagen" src="../../../images/cuenta.jpg" alt="cuenta">
         <input id ="tituloTexto" type="search" disabled>
     </header>
     <div class = "divNav">
         <nav class="navegar">
             <ul class = "list">
-                <li><a href= "../../../index.html">Inicio </a></li>
+                <li><a href=../../../index.html>Principal </a></li>
                 <li><a href=#footerInfo>Contacto </a></li>
             </ul>
         </nav>
         </div>
     <section class="sectionContenido">
         <h2 hidden> CONTENIDO </h2>
-        <form id = "formulario">
+        <form id = "formulario" onsubmit="return buscarT()">
             <fieldset>
-                    <legend> DATOS DE INGRESO </legend>
-                    <label class="labelContacto"> CEDULA* </label><br>
-                    <input type="text" id="txtCedula" name="cedula"><br>
-                    <span id="mensajeCedula"></span><br>
-                    <label class="labelContacto"> PLACA* </label><br>
-                    <input type="text" id="txtPlaca" name="placa"><br>
-                    <span id="mensajeCedula"></span><br>
-                    <label class="labelContacto"> MARCA* </label><br>
-                    <input type="text" id="txtMarca" name="marca"><br>
-                    <span id="mensajeNombre"></span><br>
-                    <label class="labelContacto"> MODELO* </label><br>
-                    <input type="text" id="txtModelo" name="modelo"><br>
-                    <span id="mensajeApellido"></span><br>
-                    <label class="labelContacto"> NUMERO*</label><br>
-                    <input type="text" id="txtNumero" name="numero"><br>
-                    <span id="mensajeCorreo"></span><br>
-                    <label class="labelContacto"> FECHA DE INGRESO* </label><br>
-                    <input type="text" id="txtFecha" name="fecha"><br>
-                    <span id="mensajeContra"></span><br>
-                    <label class="labelContacto"> HORA DE INGRESO* </label><br>
-                    <input type="text" id="txtHora" name="hora"><br>
-                    <span id="mensajeHora"></span><br>
-                    <input type = "submit" id = "botonContacto1"  value="Crear"  name = "crear" onclick="insertarU()">
+                    <legend> BUSCAR </legend>
+                    <label class="labelContacto"> CEDULA </label><br>
+                    <input type="text" class = "txtForm" id="txtCedula" name="cedula" placeholder="Ingrese la cedula a buscar">
+                    <div></div>
+                    <label class="labelContacto"> PLACA DE VEHICULO </label><br>
+                    <input type="text" class = "txtForm" id="txtPlaca" name="placa" placeholder="Ingrese la placa a buscar">
+                    <div></div>
+                    <input type = "button" id = "botonBuscar"  value= "Buscar" onclick=" buscarT()">
+                    <div id="informacion"></div> 
             </fieldset>
         </form>
     </section>

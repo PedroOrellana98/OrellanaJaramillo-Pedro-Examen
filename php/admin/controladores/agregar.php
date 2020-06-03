@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Insertar en Usuario</title>
+    <title>Insertar Ticket</title>
     <style type="text/css" rel="stylesheet">
         .error{
             color: red;
@@ -15,22 +15,21 @@
         include '../../../config/conexionBD.php';  
                       
         
-        $numero = isset($_POST["cedula"]) ? trim($_POST["cedula"]) : null;
-        $fecha_ingreso = isset($_POST["nombre"]) ? mb_strtoupper(trim($_POST["nombre"]), 'UTF-8') : null;
-        $hora_ingreso = isset($_POST["apellido"]) ? mb_strtoupper(trim($_POST["apellido"]), 'UTF-8') : null;      
-        $fecha_salida = isset($_POST["correo"]) ? trim($_POST["correo"]): null;       
-        $hora_salida = isset($_POST["contraseña"]) ? trim($_POST["contraseña"]) : null;
-        
-        /*$sql = "INSERT INTO `ticket` VALUES (0,'$cedula','u','$nombres','$apellidos','$correo', MD5('$contrasena'))";
+        $cedula = isset($_GET["cedula"]) ? trim($_GET["cedula"]) : null;
+        $placa = isset($_GET["placa"]) ? trim($_GET["placa"]) : null;
+        $marca = isset($_GET["marca"]) ? trim($_GET["marca"]) : null;
+        $modelo = isset($_GET["modelo"]) ? trim($_GET["modelo"]) : null;
+        $numero = isset($_GET["numero"]) ? trim($_GET["numero"]) : null;
+        $fecha = isset($_GET["fecha"]) ? trim($_GET["fecha"]) : null;
+        $hora = isset($_GET["hora"]) ? trim($_GET["hora"]) : null;
+
+        $sql = "INSERT INTO `vehiculo`(`codigo`, `placa`, `marca`, `modelo`, `vehiculo_eliminado`, `codigo_usuario`) VALUES (0,'$placa','$marca','$modelo','n','$cedula')";
         if ($conn->query($sql) === TRUE) {
-            $result = $conn->query("SELECT codigo FROM usuario WHERE codigo=(SELECT max(codigo) FROM usuario)");
-            while ($row = $result->fetch_assoc()) {
-                $id = $row['codigo'];
-            }
+            header("Location: ../../vista/agregar.html");
         } else {
             if($conn->errno == 1062){
                 echo "<p class='error'>La persona con la cedula $cedula ya esta registrada en el sistema </p>";  
-                header("Location: ../../vista/admin/agregar.html");
+                header("Location: ../../vista/agregar.html");
             }else{
                 echo "<p class='error'>Error: " . mysqli_error($conn) . "</p>";
             }            
@@ -38,14 +37,16 @@
 
         echo($id);
 
-        $sql1 = "INSERT INTO `telefono`(`codigo`, `numero`, `tipo`, `operadora`, `codigo_usuario`) VALUES (0,'$numero','$tipo','$operadora','$id')";
+        $sql1 = "INSERT INTO `tickets` VALUES (0,'$numero','$fecha','$hora')";
+
+        
         if ($conn->query($sql1) === TRUE) {
             header("Location: ../../vista/admin/editar.html");
-        }*/
+        }
 
          
         //cerrar la base de datos
-        $conn->close();
+        $conn->close();*/
         
     ?>
     </body>
